@@ -1,0 +1,44 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color:black; 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    transition: background 0.5s ease-in-out;
+    color: white; 
+    height: 100vh; 
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.weather-container {
+    padding: 20px;
+    background: grey; 
+    border-radius: 10px;
+    display: inline-block;
+    backdrop-filter: blur(10px); 
+}
+
+input, button {
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+}
+
+input {
+    width: 200px;
+}
+
+button {
+    background: #ff9800;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #e68900;
+}
