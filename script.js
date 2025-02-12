@@ -7,7 +7,7 @@ async function getWeather() {
         return;
     }
 
-    const apiKey = "2040a2a26f81f4a19c260dff840945e6"; // Your API key
+    const apiKey = "2040a2a26f81f4a19c260dff840945e6";
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
 
     try {
@@ -20,6 +20,9 @@ async function getWeather() {
         }
 
         const description = data.weather[0].description.toLowerCase();
+        const iconCode = data.weather[0].icon;
+        const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
+
         let backgroundImage = "";
 
         if (description.includes("rain")) {
@@ -37,12 +40,13 @@ async function getWeather() {
 
         document.body.style.backgroundImage = backgroundImage;
 
-        document.getElementById("weather-info").innerHTML = `
-            <p><strong>Temperature:</strong> ${data.main.temp}°C</p>
-            <p><strong>Humidity:</strong> ${data.main.humidity}%</p>
-            <p><strong>Wind Speed:</strong> ${data.wind.speed} m/s</p>
-            <p><strong>Description:</strong> ${data.weather[0].description}</p>
-        `;
+        document.getElementById("weather-icon").src = iconUrl;
+        document.getElementById("weather-icon").style.display = "block";
+        document.getElementById("temperature").innerHTML = `<strong>Temperature:</strong> ${data.main.temp}°C`;
+        document.getElementById("humidity").innerHTML = `<strong>Humidity:</strong> ${data.main.humidity}%`;
+        document.getElementById("wind-speed").innerHTML = `<strong>Wind Speed:</strong> ${data.wind.speed} m/s`;
+        document.getElementById("description").innerHTML = `<strong>Description:</strong> ${data.weather[0].description}`;
+
     } catch (error) {
         console.error("Error fetching weather data:", error);
         document.getElementById("weather-info").innerHTML = "<p>Failed to fetch weather data.</p>";
