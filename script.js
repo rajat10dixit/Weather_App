@@ -28,7 +28,7 @@ async function getWeather() {
             backgroundImage = "url('sunny_image.jpg')";
         } else if (description.includes("cloud")) {
             backgroundImage = "url('cloudy_image.webp')";
-        } else if (description.includes("haze") || description.include("mist") {
+        } else if (description.includes("haze") || description.include("mist")) {
             backgroundImage = "url('haze_image.webp')";
         } 
           else {
